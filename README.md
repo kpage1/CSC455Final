@@ -6,3 +6,5 @@ I don't think it's possible for me to create a folder up here, so I am going to 
     Insert_NBA.sql
     reg_users.sql
     mysqli_connect.php
+    
+whenever you see mysqli_connect.php in code, you will likely need to edit the beginning to match how many folders up it is, each folder being ../
