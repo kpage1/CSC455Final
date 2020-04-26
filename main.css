@@ -1,0 +1,140 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  background-image: url("");
+}
+td {
+  background-color: darkslateblue;
+  color: blanchedalmond
+}
+
+/* The navigation menu is contained in an absolutely positioned div 140px from the top of the page and 60px from the left margin. */
+
+#nav {
+    overflow: hidden;
+  background-color: #808080;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 100%;
+  min-width: 1000px;
+}
+
+/* Styles for the navigation menu. */
+
+ul#nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#nav a {
+    float: left;
+    display: inline;
+    width: 105px;
+    padding-left: 10px;
+    margin: 3px 0;
+    text-decoration: none;
+    font-family: Geneva, Arial, Helvetica, sans-serif;
+    font-variant: small-caps;
+    font-weight: bold;
+    color: white;
+}
+
+#nav a:link, #nav a:visited {
+    border-left: #00425E solid 10px;
+    color: #00425E;
+}
+
+#nav a:hover, #nav a:active {
+    border-left-color: #ddd;
+    /*background-color: #00425E;*/
+    color: #fff;
+}
+
+/* The here ID identifies the current page and applies a white stripe to the left as a visual indicator. */
+
+a#here {
+    border-left-color: #fff !important;
+    background-color: transparent !important;
+    color: #0074A5 !important;
+}
+
+/*nav #nav {
+  overflow: hidden;
+  background-color: #808080;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 100%;
+  min-width: 1000px;
+}
+nav ul #nav {
+    list-style-type: none;
+}
+nav ul li a #nac{
+    float: left;
+    text-align: center;
+	display: inlive;
+	text-decoration: none;
+	color: white;
+    padding: 16px;
+    font-size: 17px;
+}
+
+nav ul li a:hover, nav ul li a:focus #nav{
+	background-color: #ddd;
+    color: black;
+}
+
+.active #nav {
+    background-color: green;
+    color: yellow;
+}
+*/
+h1{
+   padding: 60px;
+  text-align: center;
+  background: #0a3665;
+  color: white;
+  font-size: 30px;
+}
+h4{
+  padding: 20px;
+  text-align: center;
+  background: #0a3665;
+  color: white;
+  font-size: 20px;
+}
+
+/* Style the button */
+.btn {
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Style the active class (and buttons on mouse-over) */
+.a, .btn:hover {
+  background-color: #666;
+  color: white;
+}
+
+p{
+   padding: 20px;
+  text-align: center;
+  background: red;
+  color: white;
+  font-size: 20px;
+}
+footer{
+   position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
