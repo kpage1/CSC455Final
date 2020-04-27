@@ -78,22 +78,14 @@ insert into matches values('3','123','125');
 insert into matches values('4','125','126');
 insert into matches values('5','126','122');
 
-insert into merch_type values('000','shirt');
-insert into merch_type values('001','cap');
-insert into merch_type values('002','jersey');
-insert into merch_type values('003','ball');
-insert into merch_type values('004','bat');
+insert into merch_type values('000','shirt','shirt.jpg','1');
+insert into merch_type values('001','cap','cap.jpg','1');
+insert into merch_type values('002','jersey','jersey.jpg','1');
+insert into merch_type values('003','ball','ball.jpg','1');
+
 
 insert into merch_price values('000','200');
 insert into merch_price values('001','100');
 insert into merch_price values('004','100');
 insert into merch_price values('003','100');
 insert into merch_price values('002','300');
-
-
-
-
-
-
-
-
