@@ -1,10 +1,4 @@
 # CSC455Final
-I don't think it's possible for me to create a folder up here, so I am going to link a zip that has the files separated into folders the way you would want to dowload them. But I will continue to do commits as I work.
+This is the final project of Krista, Alejandra, and Shaik. 
 
--Things that go outside public folder in filezilla
-    Create_NBA.sql
-    Insert_NBA.sql
-    reg_users.sql
-    mysqli_connect.php
-    
-whenever you see mysqli_connect.php in code, you will likely need to edit the beginning to match how many folders up it is, each folder being ../
+We ran into some difficulties when producing with Flask and Python so we switched to PHP. There are queries that we have written that we didnt know how to execute within the code. 
