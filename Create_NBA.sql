@@ -36,6 +36,8 @@ create table player
 		height numeric(5,0),
 		weight numeric(5,0),
 		salary numeric(5,0),
+		filename varchar(50),
+		image_id numeric(5,0)
 		primary key (playerID)
 		) ENGINE = INNODB;
 
@@ -115,14 +117,16 @@ create table matches
 create table merch_type
 (merch_ID varchar(40),
   merch_type varchar(40),
+  filename varchar(50),
+  image_id numeric(5,0)
   primary key (merch_ID)
   ) ENGINE = INNODB;
 
 create table merch_price
-(merch_type varchar(40),
+(merch_ID varchar(40),
   price numeric(4,0),
  primary key (merch_type),
- foreign key (merch_type) references merch_type(merch_ID)
+ foreign key (merch_ID) references merch_type(merch_ID)
  ) ENGINE = INNODB;
 
 
