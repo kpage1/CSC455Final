@@ -14,6 +14,10 @@
 		$errors[]='lastname';
 	
 	$valid_email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL);	//returns a string or null if empty or false if not valid	
+	$credit = filter_var(trim($_POST['credit']), FILTER_VALIDATE_INT);
+	if (empty($credit)) 
+		$errors[]='credit';
+
 	if (trim($_POST['email']==''))
 		$errors[] = 'missing_email';
 	elseif (!$valid_email)
@@ -35,8 +39,8 @@
 		$errors[] = 'accepted';
 	
 	if (!$errors) {
-		require_once ('mysqli_connect.php'); // Connect to the db.
-		$sql = "SELECT * FROM JJ_reg_users WHERE emailAddr = ?";
+		require_once ('../../../mysqli_connect.php'); // Connect to the db.
+		$sql = "SELECT * FROM reg_users WHERE emailAddr = ?";
 		$stmt = mysqli_prepare($dbc, $sql);
 		mysqli_stmt_bind_param($stmt, 's', $email);
 		mysqli_stmt_execute($stmt);
@@ -44,14 +48,28 @@
 		$rows = mysqli_num_rows($result);
 		mysqli_free_result($stmt);
 		if ($rows==0) { //email not found, add user		
-			$sql2 = "INSERT into reg_users (firstName, lastName, emailAddr, pw) VALUES (?, ?, ?, ?)";
+			$sql2 = "INSERT into reg_users (firstName, lastName, emailAddr, pw, credit) VALUES (?, ?, ?, ?, ?)";
 			$stmt2 = mysqli_prepare($dbc, $sql2);
 			$pw_hash= password_hash($password, PASSWORD_DEFAULT);
-			mysqli_stmt_bind_param($stmt2, 'ssss', $firstname, $lastname, $email, $pw_hash);
+			mysqli_stmt_bind_param($stmt2, 'ssssi', $firstname, $lastname, $email, $pw_hash, $credit);
 			mysqli_stmt_execute($stmt2);
+			echo "<p>This is your credit $credit </p>";
+			$sqlCredit = "SELECT (reg_user_level($credit)) AS credit_status";
+			$r = mysqli_real_query($dbc, $sqlCredit);
+			$result = mysqli_fetch_assoc($r);
+			$credit_status = $result['credit_status'];
+			echo "<p>Credit status $credit_status </p>";
+		
+			// $stmt3 = mysqli_prepare($dbc, $sqlCredit);
+			// mysqli_bind_param($stmt3, 'i', $credit);
+			// mysqli_stmt_execute($stmt3);
+			// $result3 = mysqli_query($dbc, $sqlCredit);
+			// $display_credit = mysqli_execute()($result3);
+			echo "<p>This is your credit status $sqlCredit</p>";
 			if (mysqli_stmt_affected_rows($stmt2)){
-				echo "<main><h2>Thank you for registering $firstname</h2><h3>We have saved your information</h3></main>";
+				echo "<main><h2>Thank you for registering $firstname</h2><h3>We have saved your information</h3><p>$result3</p></main>";
 				mysqli_free_result($stmt2);
+		
 			}
 			else {
 				echo "<main><h2>We're sorry. We are unable to add your account at this time.</h2><h3>Please try again later</h3></main>";
@@ -132,6 +150,12 @@
 			<p>
                 <label for="pw2">Confirm Password: </label>
                 <input name="password2" id="pw2" type="password">
+            </p>
+            <p>
+            	<label for="credit">Please choose a credit(determines your status) you would like: <?php if ($errors && in_array('credit', $errors)) { ?>
+                        <span class="warning">Please choose a credit</span>
+                    <?php } ?></label>
+            	<input type="number" id="credit" name="credit" min="1" max="20000">
             </p>
          
             <p>
